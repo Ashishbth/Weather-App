@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {{>headerLinks}}
+</head>
+<body>
+    <!-- <h1> Welcome to the First Page</h1>
+    <button class="btn btn-danger">Click</button> -->
+        {{>navbar}}
+
+        <!-- Main Header -->
+        <div class="container-fluid ">
+            <div class="row">
+                <div class="col-md-10 col-12 mx-auto">
+                        <div class="main_content">
+                                <form class="temp_form">
+                                        <input type="text" id="cityName" placeholder="Enter Your City Name" autocomplete="off">
+                                        <input type="submit" value="search" id="submitBtn">
+                                </form>
+                        </div>
+
+                        <div class="tempInformation">
+                                <div class="top_layer">
+                                        <p id="day">Tuesday</p>
+                                        <p id="today_date">14 feb</p>
+                                </div>
+                                <div class="main_layer">
+                                        <p id="city_name">Get Output Here</p>
+                                </div>
+                                <div class="middle_layer data_hide">
+                                        <p id="temp"> <span>0</span><sup>0</sup>C</p>
+                                        <p id="temp_status"><i class="fa fa-cloud" aria-hidden="true"></i></p>
+                                </div>
+                        </div>
+
+                </div>
+            </div>
+        </div>  
+        
+        <!-- footer code -->
+{{>footer}}
+
+<script src="./main.js"></script>
+<script >
+const btn = document.getElementById('submitBtn');
+const cityName = document.getElementById('cityName');
+const otp = document.getElementById('city_name');
+const temp_status = document.getElementById('temp_status');
+const temp = document.getElementById('temp');
+
+const getInfo = async (e)=>{
+    e.preventDefault();
+
+    let cityVal = cityName.value;
+    console.log("done")
+    
+   if(cityVal === ""){
+        otp.innerText = `Plz write the Name before search`;
+    }else{
+        try {
+            let url = `api.openweathermap.org/data/2.5/weather?q=${cityVal}&appid=8b92b71032c50c06222a0d623605da14` ;
+            const response = await fetch(url);
+            const data = response.json();
+            const arrData = [data];
+            temp.innerText = arrData[0].main.temp;
+            temp_status.innerText = arrData[0].weather[0].main;
+            console.log(response);
+        } catch (error) {
+            otp.innerText = `Plz write the City name Properly`;
+        }
+
+    }
+}
+
+btn.addEventListener('click' , getInfo);
+</script>
+</body>
+</html>

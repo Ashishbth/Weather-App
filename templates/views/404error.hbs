@@ -1,0 +1,39 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    {{>headerLinks}}
+</head>
+<body>
+    <!-- <h1> Welcome to the First Page</h1>
+    <button class="btn btn-danger">Click</button> -->
+       {{>navbar}}
+
+        <!-- Main Header -->
+        <div class="container-fluid ">
+            <div class="row">
+                <div class="col-md-10 col-12 mx-auto"> 
+                    <div class="row">
+                        <div class="col-md-6 col-12 main_header_left align-item-center mx-auto">
+                            <figure>
+                                <img src="./images/404-error.png" alt="Ashish" class="img-fluid" title="Ashish Kumar">
+                            </figure>
+                            <h1>{{errMssg}}</h1>
+                            <a href="/"><button>Check Now</button></a>
+                        </div>
+
+                        {{!-- <div class="col-md-6 col-12 main_header_left">
+                            <p>Welcome to Weather App</p>
+                            <h1>I am a <span class="txt-color">Mern Stack Developer </span> Youtuber and freelancer</h1>
+                            <a href="#"><button>About Me</button></a>
+                        </div> --}}
+                        
+
+                    </div>
+                </div>
+            </div>
+        </div>  
+        
+        <!-- footer code -->
+       {{>footer}}
+</body>
+</html>
